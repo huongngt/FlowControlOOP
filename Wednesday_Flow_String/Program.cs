@@ -14,7 +14,7 @@ namespace Wednesday_Flow_String
             MainMenu.Description = "Main Menu:";
             MainMenu.AddMenuItem("1", "Enter 1 to print the price of cinema ticket", new Action(() => { CalculateCinemaTicketPrice(); }));
             MainMenu.AddMenuItem("2", "Enter 2 to print a string ten times", new Action(() => { PrintTenString(); }));
-            MainMenu.AddMenuItem("3", "Enter 3 to find the third word in a string", new Action(() => { PrintThirdWord(); }));
+            MainMenu.AddMenuItem("3", "Enter 3 to find any word in a string", new Action(() => { PrintWord(); }));
             MainMenu.AddMenuItem("0", "Enter 0 to Exit", new Action(() => { Close(); }));
             bool DisplayMenu = true;
             while (DisplayMenu)
@@ -68,15 +68,27 @@ namespace Wednesday_Flow_String
             }
         }
 
-        private static void PrintThirdWord()
+        private static void PrintWord()
         {
             Console.Clear();
-            Console.WriteLine("This program will print out the third word in your inputed string");
-            Console.Write("Please input your string with more than 3 words:");
+
+            Console.WriteLine("This program will print out any word in your inputed string");
+            int nth = 1;
+            bool CorrectNumber = true;
+            do
+            {
+                Console.Write("Input the index of word you want to print: ");
+                CorrectNumber = int.TryParse(Console.ReadLine(), out nth);
+                if (!CorrectNumber || nth <= 0)
+                    Console.WriteLine("Invalid number inputted");
+            } while (!CorrectNumber || nth <= 0);
+            
+             
+            Console.Write("Please input your string with more than " + nth + " words:");
             string input = Console.ReadLine();
             StringManipulation str = new StringManipulation();
             str.MainString = input;            
-            Console.WriteLine("The third words: " + str.FindThirdWord());
+            Console.WriteLine("The " + nth + " words: " + str.FindWord(nth));
             Console.ReadLine();
         }
 

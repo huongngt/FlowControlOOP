@@ -17,7 +17,7 @@ namespace Wednesday_test
             StringManipulation str = new StringManipulation();
             str.MainString = "Just one space hhhh";
 
-            Assert.AreEqual("space", str.FindThirdWord());
+            Assert.AreEqual("space", str.FindWord(3));
         }
 
 
@@ -27,7 +27,7 @@ namespace Wednesday_test
             StringManipulation str = new StringManipulation();
             str.MainString = "    Just     one     space     more     ";
 
-            Assert.AreEqual("space", str.FindThirdWord());
+            Assert.AreEqual("space", str.FindWord(3));
         }
     }
 }

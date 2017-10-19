@@ -9,7 +9,7 @@ namespace Wednesday_Flow_String
     public class StringManipulation
     {
         public string MainString;
-        public string FindThirdWord()
+        public string FindWord(int nth)
         {
             string result = null;
             var str = MainString.Trim();
@@ -17,13 +17,13 @@ namespace Wednesday_Flow_String
             char[] delimiterChars = { ' ', ',', '.', ':', '\t', ';' };
             string[] array = str.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
 
-            while (array.Length < 3)
+            while (array.Length < nth)
             {
-                Console.WriteLine("Inputed string is less than 3 words. Please input again.");
+                Console.WriteLine("Inputed string is less than" + nth + " words. Please input again.");
                 str = Console.ReadLine();
                 array = str.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
             }
-            result = array[2];
+            result = array[nth-1];
             return result;
         }
 
